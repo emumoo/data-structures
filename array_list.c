@@ -2,14 +2,15 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "array_list.h"
 
-struct ArrayList {
-	unsigned int length;
-	unsigned int capacity;
-	int *contents;
-};
+// struct ArrayList {
+// 	unsigned int length;
+// 	unsigned int capacity;
+// 	int *contents;
+// };
 
-void* initArrayList() {
+struct ArrayList* initArrayList() {
 	struct ArrayList* list = malloc(sizeof(struct ArrayList*));
 	list->length = 0;
 	list->capacity = 0;
@@ -44,17 +45,3 @@ void insert(struct ArrayList* list, int val) {
 	return;
 }
 
-int main(int argc, char *argv[]) {
-	struct ArrayList* list = initArrayList();
-	int i = 0;
-
-	for (i = 0; i < 1000; i++) {
-		insert(list, i);
-	}
-
-	// for (i = 0; i < list->length; i++) {
-	// 	printf("%d\n", list->contents[i]);
-	// }
-
-	return 0;
-}
