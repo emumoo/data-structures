@@ -46,6 +46,11 @@ struct trieNode* initAutocompleteTrie() {
 
 
 void completeWord(char* word, char* autocompleted) {
+	if (word[0] == 0) {
+		autocompleted[0] = 0;
+		return;
+	}
+
 	int i = 0;
 	// int doneSearching = 0;
 	char currLetter;
@@ -78,7 +83,7 @@ void completeWord(char* word, char* autocompleted) {
 			if (child) {
 				if (child->isWord) {
 					currNode = child;
-					break;
+					goto FOUNDWORD;
 				} else {
 					insert(q, (long) child);
 				}
@@ -93,7 +98,7 @@ void completeWord(char* word, char* autocompleted) {
 		}
 	}
 
-	autocompleted[currNode->depth + 1] = 0;
+	FOUNDWORD: autocompleted[currNode->depth + 1] = 0;
 	while (currNode->parent) {
 		autocompleted[currNode->depth] = currNode->c;
 		currNode = currNode->parent;
