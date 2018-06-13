@@ -4,39 +4,32 @@
 #include <stdio.h>
 #include "array_list.h"
 
-// struct ArrayList {
-// 	unsigned int length;
-// 	unsigned int capacity;
-// 	int *contents;
-// };
-
-struct ArrayList* initArrayList() {
-	struct ArrayList* list = malloc(sizeof(struct ArrayList*));
+void initArrayList(struct ArrayList* list) {
+	// printf("Initializing ArrayList\n");
 	list->length = 0;
 	list->capacity = 0;
 	list->contents = 0;
-	printf("Initializing ArrayList\n");
-	return list;
+	return;
 }
 
-void insert(struct ArrayList* list, int val) {
+void insert(struct ArrayList* list, long val) {
 	// empty list
 	if (!list->contents) {
-		list->contents = (int *) malloc(sizeof(int));
+		// printf("Inserting first element to ArrayList\n");
+		list->contents = (long *) malloc(sizeof(long));
 		list->length = 1;
 		list->capacity = 1;
 		list->contents[0] = val;
-		printf("Inserting first element to ArrayList\n");
 		return;
 	}
 
 	// list has reached capacity
 	if (list->length == list->capacity) {
-		list->contents = realloc(list->contents, 2*list->capacity*sizeof(int));
+		// printf("Doubling capacity: %d to %d\n", list->capacity / 2, list->capacity);
+		list->contents = realloc(list->contents, 2*list->capacity*sizeof(long));
 		list->capacity = 2*list->capacity;
 		list->contents[list->length] = val;
 		list->length++;
-		printf("Doubling capacity: %d to %d\n", list->capacity / 2, list->capacity);
 		return;
 	}
 

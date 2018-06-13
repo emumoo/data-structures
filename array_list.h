@@ -1,4 +1,5 @@
 // Lawrence Hook
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -6,8 +7,8 @@
 struct ArrayList {
 	unsigned int length;
 	unsigned int capacity;
-	int *contents;
+	long *contents;
 };
 
-struct ArrayList* initArrayList();
-void insert(struct ArrayList* list, int val);
+void initArrayList(struct ArrayList* list);
+void insert(struct ArrayList* list, long val);

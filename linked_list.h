@@ -1,5 +1,5 @@
 // Lawrence Hook
-
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
